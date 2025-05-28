@@ -1,0 +1,45 @@
+/* css/reset.css */
+
+/* 1. Сбрасываем отступы и поля у всех элементов */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Убираем стили ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 3. Сбрасываем стили списков */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 4. Убираем рамки у изображений */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* 5. Убрать стили у кнопок и форм */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* 6. Установить единый line-height */
+body {
+  line-height: 1; 
+}
