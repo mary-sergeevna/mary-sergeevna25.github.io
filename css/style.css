@@ -1,0 +1,276 @@
+/* ============================= */
+/* Переменные CSS (root variables) */
+/* ============================= */
+:root { /* контейнер для глобальных CSS-переменных */
+  --clr-primary:   #d3345c;   /* основной цвет акцентов */
+  --clr-secondary: #550b1d;   /* цвет для второстепенных акцентов */
+  --bg1:           #1a2a6c;   /* начальный цвет градиента фона */
+  --bg2:           #b21f1f;   /* средний цвет градиента фона */
+  --bg3:           #fdbb2d;   /* конечный цвет градиента фона */
+  --ff-base:       'Poppins', sans-serif; /* базовый шрифт страницы */
+  --transition:    .25s ease-in-out;      /* стандартная скорость и кривая переходов */
+  --radius:        .75rem;                /* общий радиус скругления элементов */
+} /* конец :root */
+
+/* ============================= */
+/* Анимация плавного движения градиента */
+/* ============================= */
+@keyframes gradientBG { /* ключевые кадры для анимации */
+  0%   { background-position: 0% 50%; }   /* начало анимации: позиция фона слева */
+  50%  { background-position: 100% 50%; } /* середина: фон перемещён вправо */
+  100% { background-position: 0% 50%; }   /* конец: возвращение в исходное положение */
+} /* конец @keyframes gradientBG */
+
+/* ============================= */
+/* Стили для тега BODY */
+/* ============================= */
+body { /* корневой элемент документа */
+  margin: 0;                                  /* сброс отступов браузера */
+  font-family: var(--ff-base);                /* установка базового шрифта */
+  line-height: 1.6;                           /* высота строки для лучшей читабельности */
+  color: #fff;                                /* цвет текста */
+  background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3)); /* градиент фона */
+  background-size: 400% 400%;                 /* размер градиента для плавности */
+  animation: gradientBG 15s infinite ease;     /* запуск анимации градиента */
+} /* конец body */
+
+/* ============================= */
+/* Контейнер-обёртка (.container) */
+/* ============================= */
+.container { /* центрирует содержимое и задаёт максимальную ширину */
+  max-width: 1200px;    /* максимальная ширина контейнера */
+  margin: 1rem auto;    /* вертикальные отступы и автоматическое выравнивание */
+  padding: 0 1rem;      /* горизонтальные внутренние отступы */
+} /* конец .container */
+
+/* ============================= */
+/* Стили для HEADER и NAV */
+/* ============================= */
+.header { /* шапка сайта */
+  position: sticky;      /* "прилипание" при прокрутке */
+  top: 0;                /* фиксирование к верху окна */
+  width: 100%;           /* растягивание на всю ширину */
+  z-index: 100;          /* расположение над другими элементами */
+  backdrop-filter: blur(5px); /* размытие фона под шапкой */
+} /* конец .header */
+
+.nav { /* контейнер для навигации */
+  display: flex;         /* флекс-контейнер */
+  align-items: center;   /* вертикальное выравнивание */
+  justify-content: space-between; /* логотип слева, меню справа */
+  position: relative;    /* для абсолютного позиционирования потомков */
+  padding: 1rem;         /* внутренние отступы */
+} /* конец .nav */
+
+.nav__logo { /* логотип в навигации */
+  font-size: 2rem;       /* размер текста логотипа */
+  font-weight: 800;      /* очень жирный текст */
+  color: var(--clr-secondary); /* цвет текста логотипа */
+  text-decoration: none; /* убираем подчёркивание */
+  margin-right: 3rem;    /* отступ справа */
+} /* конец .nav__logo */
+
+.nav__checkbox { /* скрытый чекбокс для управления мобильным меню */
+  display: none;         /* не показываем пользователю */
+} /* конец .nav__checkbox */
+
+.nav__button { /* кнопка-бургер для мобильного меню */
+  display: none;         /* скрыта по умолчанию */
+  position: absolute;    /* абсолютное позиционирование */
+  top: 50%;              /* по центру по вертикали */
+  right: 1rem;           /* отступ справа */
+  transform: translateY(-50%); /* выравнивание */
+  background: none;      /* без фонового цвета */
+  border: none;          /* без рамки */
+  padding: .5rem;        /* внутренний отступ */
+  cursor: pointer;       /* курсор «рука» */
+  z-index: 200;          /* над другими элементами */
+} /* конец .nav__button */
+
+.nav__icon, /* полоска бургера */
+.nav__icon::before, /* верхняя псевдополоска */
+.nav__icon::after {  /* нижняя псевдополоска */
+  display: block;      /* блочный элемент */
+  width: 1.8rem;       /* длина полоски */
+  height: 2px;         /* толщина полоски */
+  background: var(--clr-secondary); /* цвет полос */
+  position: relative;  /* для псевдоклассов */
+  transition: var(--transition); /* плавный переход */
+} /* конец базовых стилей .nav__icon */
+
+.nav__icon::before { /* верхняя полоска */
+  content: '';         /* обязательный псевдоэлемент */
+  position: absolute;  /* абсолютное позиционирование */
+  top: -0.6rem;        /* смещение вверх */
+} /* конец .nav__icon::before */
+
+.nav__icon::after { /* нижняя полоска */
+  content: '';         /* обязательный псевдоэлемент */
+  position: absolute;  /* абсолютное позиционирование */
+  top: 0.6rem;         /* смещение вниз */
+} /* конец .nav__icon::after */
+
+.nav__list { /* список ссылок навигации */
+  list-style: none;     /* убираем маркеры */
+  display: flex;        /* пункты в ряд */
+  gap: 2rem;            /* расстояние между пунктами */
+  margin: 0;            /* сброс отступов */
+  padding: 0;           /* сброс внутренних отступов */
+} /* конец .nav__list */
+
+.nav__list a { /* ссылки в меню */
+  font-weight: 600;     /* полужирный текст */
+  color: #fff;          /* белый цвет текста */
+  text-decoration: none; /* без подчёркивания */
+  transition: var(--transition); /* плавность при наведении */
+} /* конец .nav__list a */
+
+.nav__list a:hover { /* состояние при наведении */
+  color: var(--clr-primary); /* изменение цвета */
+} /* конец .nav__list a:hover */
+
+.btn { /* общий класс для кнопок */
+  display: inline-block; /* блочно-строчный элемент */
+  text-decoration: none; /* без подчёркивания */
+  padding: 1rem 2rem;    /* внутренние отступы */
+  border-radius: var(--radius); /* скругление */
+  font-size: 1rem;       /* размер текста */
+  transition: var(--transition); /* плавные переходы */
+} /* конец .btn */
+
+.btn--primary { /* основной стиль кнопки */
+  background: var(--clr-primary); /* фоновый цвет */
+  color: #fff;            /* цвет текста */
+  border: 2px solid transparent; /* рамка для hover */
+} /* конец .btn--primary */
+
+.btn--primary:hover { /* hover для .btn--primary */
+  background: transparent;       /* прозрачный фон */
+  color: var(--clr-primary);    /* цвет текста */
+  border-color: var(--clr-primary); /* цвет рамки */
+} /* конец .btn--primary:hover */
+
+.hero { /* секция «герой» с заголовком */
+  padding: 6rem 1rem;   /* внутренние отступы сверху/снизу и по бокам */
+  text-align: center;   /* выравнивание текста по центру */
+} /* конец .hero */
+
+.hero__title { /* заголовок внутри секции герой */
+  font-size: 3rem;        /* размер шрифта */
+  font-weight: 800;       /* жирный текст */
+  margin-bottom: 1rem;    /* отступ снизу */
+  text-transform: uppercase; /* все буквы заглавные */
+} /* конец .hero__title */
+
+.hero__subtitle { /* подзаголовок внутри героя */
+  font-size: 1.25rem;     /* размер шрифта */
+  margin-bottom: 2rem;    /* отступ снизу */
+} /* конец .hero__subtitle */
+
+.schedule__grid { /* контейнер сетка для программы */
+  display: grid;                                               /* грид-сетка */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* адаптивные колонки */
+  gap: 2rem;                                                  /* промежутки */
+  margin: 2rem 0;                                             /* внешние отступы */
+} /* конец .schedule__grid */
+
+.schedule__item { /* элемент программы */
+  background: #fff;     /* белый фон карточки */
+  color: #333;          /* цвет текста */
+  padding: 1.5rem;      /* внутренние отступы */
+  border-radius: var(--radius); /* скругление */
+  transition: transform .3s ease; /* плавный hover */
+} /* конец .schedule__item */
+
+.schedule__item:hover { /* hover для карточек программы */
+  transform: translateY(-5px); /* эффект подъёма */
+} /* конец .schedule__item:hover */
+
+.speakers__grid { /* сетка для блоков спикеров */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* колонки */
+  gap: 2rem;                                                    /* промежутки */
+  margin: 2rem 0;                                               /* отступы */
+  text-align: center;                                           /* центр текста */
+} /* конец .speakers__grid */
+
+.speaker { /* карточка спикера */
+  background: #fff;        /* белый фон */
+  color: #333;             /* цвет текста */
+  padding: 1.5rem;         /* внутренний отступ */
+  border-radius: var(--radius); /* скругление */
+  transition: transform .3s ease;  /* плавный hover */
+} /* конец .speaker */
+
+.speaker:hover { /* hover для карточки спикера */
+  transform: scale(1.03); /* эффект небольшого увеличения */
+} /* конец .speaker:hover */
+
+.speaker img { /* изображение спикера */
+  width: 100%;            /* растягивание по ширине контейнера */
+  border-radius: 50%;     /* круглые аватары */
+  margin-bottom: 1rem;    /* отступ снизу */
+} /* конец .speaker img */
+
+.form { /* форма регистрации */
+  margin: 2rem 0;         /* вертикальные отступы */
+} /* конец .form */
+
+.form__group { /* группа поля и метки */
+  margin-bottom: 1.5rem;  /* отступ между полями */
+} /* конец .form__group */
+
+.form label { /* метка для поля */
+  display: block;         /* блочный элемент */
+  margin-bottom: .5rem;   /* отступ снизу */
+  font-weight: 600;       /* жирность текста */
+  color: #333;            /* цвет текста */
+} /* конец .form label */
+
+.form input { /* поля ввода */
+  width: 100%;            /* растягивание на всю ширину */
+  padding: 1rem;          /* внутренний отступ */
+  border: 2px solid #ccc; /* серая рамка */
+  border-radius: var(--radius); /* скругление */
+  font-size: 1rem;        /* размер текста */
+  transition: border-color var(--transition); /* плавность смены рамки */
+} /* конец .form input */
+
+.form input:focus { /* фокусное состояние поля */
+  border-color: var(--clr-secondary); /* изменение цвета рамки */
+  outline: none;                      /* убираем стандартный outline */
+} /* конец .form input:focus */
+
+.form input:invalid { /* невалидное состояние поля */
+  border-color: red;    /* рамка красного цвета */
+} /* конец .form input:invalid */
+
+#about { /* секция "О мероприятии" */
+  margin-bottom: 2rem;   /* отступ снизу */
+} /* конец #about */
+
+/* ============================= */
+/* Мобильное меню (max-width 768px) */
+/* ============================= */
+@media (max-width: 768px) { /* медиазапрос для мобильных */
+  .nav__button {          /* кнопка бургера */
+    display: block;       /* показываем на мобильных */
+  } /* конец .nav__button */
+
+  .nav__list {            /* меню */
+    display: none;        /* скрываем по умолчанию */
+  } /* конец .nav__list */
+
+  .nav__checkbox:checked ~ .nav__list { /* если чекбокс активен */
+    display: flex;        /* показываем меню */
+    flex-direction: column;
+    align-items: center;  /* выравнивание по центру */
+    gap: 1.5rem;          /* промежутки */
+    background: #fff;     /* фон меню */
+    position: absolute;   /* абсолютное позиционирование */
+    top: 100%;           /* сразу под шапкой */
+    left: 0; right: 0;    /* растягиваем во всю ширину */
+    padding: 1rem 0;      /* внутренние отступы */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* тень */
+  } /* конец навигационного списка */
+} /* конец медиазапроса */
