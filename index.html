@@ -1,23 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style>
-		.box {
-			width: 100px;
-			height: 100px;
-			background: paleturquoise;
-		}
-		.container {
-			background: palegoldenrod;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartStart Tech Camp 2025</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div class="container">
-		<div class="box"></div>
-	</div>
+  <header class="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">SmartStart</a>
+      <input type="checkbox" id="nav-toggle" class="nav__checkbox">
+      <label for="nav-toggle" class="nav__button">
+        <span class="nav__icon"></span>
+      </label>
+      <ul class="nav__list">
+        <li><a href="#about">О мероприятии</a></li>
+        <li><a href="#schedule">Программа</a></li>
+        <li><a href="#speakers">Спикеры</a></li>
+        <li><a href="#register">Регистрация</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero__content container">
+        <h1 class="hero__title">SmartStart Tech Camp 2025</h1>
+        <p class="hero__subtitle">
+          Один день — сотни идей, мастер-классы и нетворкинг для старшеклассников
+        </p>
+        <a href="#register" class="btn btn--primary">Зарегистрироваться</a>
+      </div>
+    </section>
+
+    <section id="about" class="about container">
+      <h2>О мероприятии</h2>
+      <p>
+        Уникальная возможность погрузиться в web-разработку, дизайн и робототехнику под руководством экспертов индустрии.
+      </p>
+    </section>
+
+    <section id="schedule" class="schedule container">
+      <h2>Программа</h2>
+      <div class="schedule__grid">
+        <div class="schedule__item">
+          <time>10:00</time>
+          <p>Регистрация и приветственный кофе</p>
+        </div>
+        <div class="schedule__item">
+          <time>11:00</time>
+          <p>HTML & CSS: основы верстки</p>
+        </div>
+        <div class="schedule__item">
+          <time>13:00</time>
+          <p>Обед и свободное общение</p>
+        </div>
+        <div class="schedule__item">
+          <time>14:00</time>
+          <p>Flexbox, Grid и адаптивность</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="speakers" class="speakers container">
+      <h2>Спикеры</h2>
+      <div class="speakers__grid">
+        <div class="speaker">
+          <img src="img/speakers/alex.png" alt="Алексей Иванов">
+          <h3>Алексей Иванов</h3>
+          <p>Frontend-разработчик Maximum</p>
+        </div>
+        <div class="speaker">
+          <img src="img/speakers/olga.png" alt="Ольга Смирнова">
+          <h3>Ольга Смирнова</h3>
+          <p>UX/UI-дизайнер Pear</p>
+        </div>
+        <div class="speaker">
+          <img src="img/speakers/andrei.png" alt="Андрей Варкин">
+          <h3>Андрей Варкин</h3>
+          <p>CEO Pear</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="register" class="register container">
+      <h2>Регистрация</h2>
+      <form class="form">
+        <div class="form__group">
+          <label for="name">Имя</label>
+          <input type="text" id="name" name="name" required placeholder="Ваше имя">
+        </div>
+        <div class="form__group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="example@mail.com">
+        </div>
+        <button type="submit" class="btn btn--primary">Отправить</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 SmartStart Tech Camp. Все права защищены.</p>
+    </div>
+  </footer>
 </body>
 </html>
